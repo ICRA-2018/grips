@@ -1,0 +1,7 @@
+name: grips
+
+base:
+  system: ubuntu
+  version: 16.04
+  cuda: 9.0
+  opengl: runtime
