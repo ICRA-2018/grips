@@ -1,4 +1,4 @@
-FROM nvidia/cudagl:9.0-devel-ubuntu16.04
+FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
@@ -19,4 +19,43 @@ WORKDIR ${HOME}
 
 CMD ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]
 
+RUN apt-get update \
+ && apt-get install -yq --no-install-recommends \
+    cmake \
+    libeigen3-dev \
+    qt5-default \
+    libqt5charts5-dev \
+    libqt5svg5-dev \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update \
+ && apt-get install -yq --no-install-recommends \
+    cmake \
+    pkg-config \
+    libboost-serialization-dev \
+    libboost-filesystem-dev \
+    libboost-system-dev \
+    libboost-program-options-dev \
+    libboost-test-dev \
+    libeigen3-dev \
+    libode-dev \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/ompl/ompl.git /ompl \
+ && cd /ompl \
+ && mkdir build \
+ && cd build \
+ && cmake .. \
+ && make -j2 install \
+ && rm -fr /ompl
+
+COPY . ${HOME}
+RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
+
+RUN mkdir build \
+ && cd build \
+ && cmake .. \
+ && make -j2

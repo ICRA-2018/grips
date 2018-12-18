@@ -2,6 +2,27 @@ name: grips
 
 base:
   system: ubuntu
-  version: 16.04
-  cuda: 9.0
-  opengl: runtime
+  version: 18.04
+#  cuda: 9.0
+#  opengl: runtime
+
+apt-packages:
+  - cmake
+  - libeigen3-dev
+  - qt5-default
+  - libqt5charts5-dev
+  - libqt5svg5-dev
+
+source-packages:
+  - name: ompl
+    repo: https://github.com/ompl/ompl.git
+    depends: 
+      - cmake
+      - pkg-config
+      - libboost-serialization-dev
+      - libboost-filesystem-dev
+      - libboost-system-dev
+      - libboost-program-options-dev
+      - libboost-test-dev
+      - libeigen3-dev
+      - libode-dev
