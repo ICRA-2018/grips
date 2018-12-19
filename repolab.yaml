@@ -6,7 +6,6 @@ base:
   opengl: runtime
 
 apt-packages:
-  - cmake
   - libeigen3-dev
   - qt5-default
   - libqt5charts5-dev
