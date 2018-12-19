@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8

@@ -3,8 +3,7 @@ name: grips
 base:
   system: ubuntu
   version: 18.04
-#  cuda: 9.0
-#  opengl: runtime
+  opengl: runtime
 
 apt-packages:
   - cmake
