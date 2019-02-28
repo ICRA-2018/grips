@@ -1,19 +1,21 @@
 name: grips
 
 base:
-  system: ubuntu
-  version: 18.04
+  ubuntu: 18.04
   opengl: runtime
 
-apt-packages:
+build: cmake 
+
+apt:
   - libeigen3-dev
   - qt5-default
   - libqt5charts5-dev
   - libqt5svg5-dev
 
-source-packages:
+source:
   - name: ompl
     repo: https://github.com/ompl/ompl.git
+    build: cmake
     depends: 
       - cmake
       - pkg-config
