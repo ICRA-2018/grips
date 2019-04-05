@@ -52,6 +52,9 @@ The following CMake targets are available:
 
 # How to Run with Docker
 ## Linux
+#### Prerequisites
+* NVIDIA GPU
+* [nvidia-docker 2.0](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0))
 
 Tested on Ubuntu 16.04.6 with Docker 18.06.1-ce.
 
