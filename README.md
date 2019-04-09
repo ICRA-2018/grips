@@ -81,7 +81,7 @@ docker run --rm -p 8888:8888 -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix
   - Select `Multiple windows`, `Start no client`, and set `Disable access control`
 
 Tested on Windows 10 Education wih VcXsrv 1.20.1.4 and Docker Desktop 2.0.0.3 (engine: 18.09.2).
-1. Open a Docker Quickstart Terminal and run the command:
+1. Open a Windows PowerShell and run the command:
 ```
 docker run --rm -p 8888:8888 -e DISPLAY=host.docker.internal:0  icra2018/grips:latest
 ```
