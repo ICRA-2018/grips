@@ -1,4 +1,4 @@
-FROM nvidia/opengl:1.0-glvnd-runtime-ubuntu18.04
+FROM ubuntu:18.04
 
 ################################## JUPYTERLAB ##################################
 
@@ -8,12 +8,14 @@ ENV LC_ALL C.UTF-8
 
 RUN apt-get -o Acquire::ForceIPv4=true update && apt-get -yq dist-upgrade \
  && apt-get -o Acquire::ForceIPv4=true install -yq --no-install-recommends \
-	locales python-pip cmake \
-	python3-pip python3-setuptools git build-essential \
+	locales cmake git build-essential \
+    python-pip \
+	python3-pip python3-setuptools \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install jupyterlab bash_kernel \
+RUN pip3 install --upgrade pip setuptools \
+ && python3 -m pip install jupyterlab==0.35.4 bash_kernel==0.7.1 tornado==5.1.1 \
  && python3 -m bash_kernel.install
 
 ENV SHELL=/bin/bash \
@@ -78,7 +80,7 @@ COPY . ${HOME}/grips
 
 RUN mkdir ${HOME}/grips/build \
  && cd ${HOME}/grips/build \
- && cmake .. \
+ && cmake  .. \
  && make -j2
 
 ##################################### TAIL #####################################
